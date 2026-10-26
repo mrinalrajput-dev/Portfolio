@@ -30,12 +30,22 @@
     </nav>
 
     <!-- HERO -->
-    <section class="h-screen w-full flex flex-col justify-center items-center text-center px-6 md:px-12">
-        <h1 class="text-[16vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">Mrinal</h1>
-        <p class="text-lg md:text-2xl font-bold tracking-widest uppercase text-gray-400 max-w-3xl">
-            Video Editor & Director <br>
-            <span class="text-sm md:text-base font-normal tracking-normal text-gray-500 mt-4 block">Crafting high-stakes visual narratives for global creators & visionary brands.</span>
-        </p>
+    <section class="h-screen w-full flex flex-col justify-center items-center text-center px-6 md:px-12 relative overflow-hidden bg-black">
+        
+        <!-- Background Video Layer -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none">
+            <source src="hero-loop.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Foreground Text Layer -->
+        <div class="relative z-10 flex flex-col items-center">
+            <h1 class="text-[16vw] leading-[0.85] font-black uppercase tracking-tighter mb-8 drop-shadow-2xl">Mrinal</h1>
+            <p class="text-lg md:text-2xl font-bold tracking-widest uppercase text-gray-400 max-w-3xl drop-shadow-lg">
+                Video Editor & Director <br>
+                <span class="text-sm md:text-base font-normal tracking-normal text-gray-500 mt-4 block">Crafting high-stakes visual narratives for global creators & visionary brands.</span>
+            </p>
+        </div>
+        
     </section>
 
     <!-- WORK GRID (cards are built from the list at the bottom of this file) -->
