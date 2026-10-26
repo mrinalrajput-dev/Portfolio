@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mrinal Rajput | Video Editor & Director</title>
+    <title>Mrinal | Video Editor & Director</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -21,27 +21,25 @@
         ::-webkit-scrollbar-thumb:hover { background: #444; }
     </style>
 </head>
-<!-- UPDATED ACCENT COLOR & TEXT CONTRAST -->
 <body class="antialiased selection:bg-[#89D6E8] selection:text-black relative">
 
-    <!-- PRELOADER QUOTE ANIMATION -->
-    <div id="preloader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-1000 ease-in-out">
+    <!-- OVERLAY QUOTE ANIMATION -->
+    <div id="preloader" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/85 backdrop-blur-md transition-opacity duration-1000 ease-in-out pointer-events-auto">
         <div class="max-w-4xl px-6 text-center">
             <h2 id="quote-text" class="text-3xl md:text-5xl font-medium leading-tight italic text-gray-200 mb-8 opacity-0 transition-opacity duration-1000"></h2>
             <p id="quote-author" class="text-sm md:text-lg font-bold tracking-widest uppercase text-[#89D6E8] opacity-0 transition-opacity duration-1000 delay-500"></p>
         </div>
     </div>
 
-    <!-- REFINED TOP NAV: Left-aligned Trigger -->
+    <!-- REFINED TOP NAV -->
     <nav class="fixed top-0 w-full z-40 px-5 py-2 md:px-6 md:py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
         
-        <!-- NEW iOS-STYLE TRIGGER -->
+        <!-- iOS-STYLE TRIGGER -->
         <button id="contactTrigger" class="flex items-center gap-3 group focus:outline-none">
-            <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-[#89D6E8] transition-all duration-300">
+            <img src="IMG_8580%20(1).jpeg" alt="Mrinal" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-[#89D6E8] transition-all duration-300">
             <span class="text-[10px] md:text-sm font-bold tracking-widest uppercase text-white group-hover:text-[#89D6E8] transition-colors duration-300">Let's Connect</span>
         </button>
 
-        <!-- The right side is now empty to keep the brutalist aesthetic clean -->
         <div></div>
     </nav>
 
@@ -53,7 +51,6 @@
         <!-- The Card -->
         <div id="contactCard" class="relative w-full max-w-sm aspect-[4/5] md:aspect-[9/16] max-h-[85vh] bg-[#111] rounded-[2.5rem] overflow-hidden shadow-2xl scale-95 transition-transform duration-500 ease-out border border-white/10 flex flex-col items-center justify-end pb-8 md:pb-12">
             
-            <!-- Close Button -->
             <button id="closeContactCard" class="absolute top-6 right-6 z-20 w-8 h-8 bg-black/50 hover:bg-white text-white hover:text-black rounded-full flex items-center justify-center backdrop-blur-md transition-colors border border-white/20">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -61,12 +58,13 @@
             </button>
 
             <!-- Large BG Image / Avatar -->
-            <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="absolute inset-0 w-full h-full object-cover opacity-70">
+            <img src="IMG_8580%20(1).jpeg" alt="Mrinal" class="absolute inset-0 w-full h-full object-cover opacity-70">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 
             <!-- Content -->
             <div class="relative z-10 w-full flex flex-col items-center px-6">
-                <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white mb-2 drop-shadow-2xl text-center leading-none">Mrinal<br>Rajput</h2>
+                <!-- Name Updated to just Mrinal -->
+                <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white mb-2 drop-shadow-2xl text-center leading-none">Mrinal</h2>
                 <p class="text-xs md:text-sm font-bold text-[#89D6E8] tracking-widest uppercase mb-8 drop-shadow-md">Video Editor & Director</p>
 
                 <div class="w-full flex flex-col gap-3">
@@ -92,7 +90,8 @@
 
     <!-- HERO -->
     <section class="h-screen w-full relative overflow-hidden bg-black flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-24">
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0">
+        <!-- Added preload="auto" to force instant loading -->
+        <video autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0">
             <source src="hero-loop.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none"></div>
@@ -172,7 +171,7 @@
 
     <script>
         /* ============================================================
-           PRELOADER QUOTE ANIMATION
+           PRELOADER QUOTE ANIMATION (Overlay Version)
            ============================================================ */
         document.addEventListener("DOMContentLoaded", () => {
             const quotes = [
@@ -181,47 +180,39 @@
                 { text: "To be an artist means never to avert one's eyes.", author: "Akira Kurosawa" }
             ];
             
-            // Randomly select quote
             const q = quotes[Math.floor(Math.random() * quotes.length)];
-            
             const quoteTextEl = document.getElementById('quote-text');
             const quoteAuthorEl = document.getElementById('quote-author');
             
             quoteTextEl.innerText = `"${q.text}"`;
             quoteAuthorEl.innerText = `— ${q.author}`;
             
-            // Fade in quote elements slightly after load
             setTimeout(() => {
                 quoteTextEl.classList.remove('opacity-0');
                 quoteAuthorEl.classList.remove('opacity-0');
             }, 300);
 
-            // Hold for reading, then fade out preloader
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
                 preloader.classList.add('opacity-0');
                 preloader.classList.add('pointer-events-none');
                 
-                // Remove preloader from DOM entirely after fade completes
                 setTimeout(() => preloader.remove(), 1000);
-            }, 3000); // 3 seconds total reading time
+            }, 3000); 
         });
 
         /* ============================================================
            YOUR PROJECTS
            ============================================================ */
         const projects = [
-            // 1. ADS 
             { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'project2-loop.mp4',  thumb: 'project2-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Ed Mylett',        type: 'Narrative Series',      wide: false, video: 'project3-loop.mp4',  thumb: 'project3-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Tony Robbins',     type: 'High-Retention Social', wide: false, video: 'project4-loop.mp4',  thumb: 'project4-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
 
-            // 2. SHORT FILMS 
             { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'project6-loop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             
-            // 3. ORGANIC CONTENT 
             { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
@@ -270,7 +261,6 @@
         const closeContactCard = document.getElementById('closeContactCard');
 
         function openContact() {
-            // Disable body scroll when modal is open
             document.body.style.overflow = 'hidden';
             contactCardOverlay.classList.remove('opacity-0', 'pointer-events-none');
             contactCard.classList.remove('scale-95');
@@ -278,7 +268,6 @@
         }
 
         function closeContact() {
-            // Restore body scroll
             document.body.style.overflow = 'auto';
             contactCardOverlay.classList.add('opacity-0', 'pointer-events-none');
             contactCard.classList.remove('scale-100');
