@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mrinal | Video Editor & Director</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif; background-color: #000; color: #fff; overflow-x: hidden; }
         .modal-hidden { opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; }
         .modal-active { opacity: 1; pointer-events: auto; visibility: visible; transition: all 0.3s ease; }
         ::-webkit-scrollbar { width: 8px; }
@@ -23,41 +20,27 @@
 </head>
 <body class="antialiased selection:bg-[#89D6E8] selection:text-black relative">
 
-    <!-- REFINED TOP NAV -->
+    <!-- TOP NAV -->
     <nav class="fixed top-0 w-full z-40 px-5 py-2 md:px-6 md:py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
-        
-        <!-- iOS-STYLE TRIGGER -->
         <button id="contactTrigger" class="flex items-center gap-3 group focus:outline-none">
-            <img src="IMG_8580%20(1).jpeg" alt="Mrinal" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-[#89D6E8] transition-all duration-300">
+            <img src="IMG_8580%20(1).jpeg" alt="Mrinal" decoding="async" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-[#89D6E8] transition-all duration-300">
             <span class="text-[10px] md:text-sm font-bold tracking-widest uppercase text-white group-hover:text-[#89D6E8] transition-colors duration-300">Let's Connect</span>
         </button>
-
         <div></div>
     </nav>
 
-    <!-- iOS CONTACT CARD OVERLAY -->
-    <div id="contactCardOverlay" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center p-4">
-        <!-- Click background to close -->
+    <!-- CONTACT CARD (hidden fully when closed so it costs nothing) -->
+    <div id="contactCardOverlay" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-xl opacity-0 invisible pointer-events-none transition-all duration-500 flex items-center justify-center p-4">
         <div class="absolute inset-0" id="contactCardBg"></div>
-
-        <!-- The Card -->
         <div id="contactCard" class="relative w-full max-w-sm aspect-[4/5] md:aspect-[9/16] max-h-[85vh] bg-[#111] rounded-[2.5rem] overflow-hidden shadow-2xl scale-95 transition-transform duration-500 ease-out border border-white/10 flex flex-col items-center justify-end pb-8 md:pb-12">
-            
-            <button id="closeContactCard" class="absolute top-6 right-6 z-20 w-8 h-8 bg-black/50 hover:bg-white text-white hover:text-black rounded-full flex items-center justify-center backdrop-blur-md transition-colors border border-white/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+            <button id="closeContactCard" aria-label="Close" class="absolute top-6 right-6 z-20 w-8 h-8 bg-black/50 hover:bg-white text-white hover:text-black rounded-full flex items-center justify-center backdrop-blur-md transition-colors border border-white/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
-
-            <!-- Large BG Image / Avatar -->
-            <img src="IMG_8580%20(1).jpeg" alt="Mrinal" class="absolute inset-0 w-full h-full object-cover opacity-70">
+            <img id="contactImg" data-src="IMG_8580%20(1).jpeg" alt="Mrinal" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-70">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-
-            <!-- Content -->
             <div class="relative z-10 w-full flex flex-col items-center px-6">
                 <h2 class="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white mb-2 drop-shadow-2xl text-center leading-none">Mrinal</h2>
                 <p class="text-xs md:text-sm font-bold text-[#89D6E8] tracking-widest uppercase mb-8 drop-shadow-md">Video Editor & Director</p>
-
                 <div class="w-full flex flex-col gap-3">
                     <a href="tel:+918700251255" class="w-full py-4 bg-black/50 hover:bg-[#89D6E8] text-white hover:text-black backdrop-blur-md rounded-2xl flex justify-center items-center gap-3 font-bold transition-colors border border-white/20 hover:border-[#89D6E8]">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
@@ -79,21 +62,14 @@
         <a href="#organic-content" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Organic</a>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO (video loads AFTER the page appears) -->
     <section class="h-screen w-full relative overflow-hidden bg-black flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-24">
-        <video autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0">
-            <source src="hero-loop.mp4" type="video/mp4">
-        </video>
+        <video id="heroVideo" data-src="hero-loop.mp4" loop muted playsinline preload="none" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0"></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none"></div>
-        
         <div class="relative z-10 w-full max-w-4xl">
             <h1 class="text-6xl md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter mb-4 drop-shadow-2xl">Mrinal</h1>
-            <p class="text-base md:text-xl font-bold tracking-widest uppercase text-gray-300 drop-shadow-lg mb-4">
-                Video Editor & Director
-            </p>
-            <p class="text-sm md:text-base font-normal tracking-wide text-gray-400 max-w-xl">
-                Crafting high-stakes visual narratives for global creators & visionary brands.
-            </p>
+            <p class="text-base md:text-xl font-bold tracking-widest uppercase text-gray-300 drop-shadow-lg mb-4">Video Editor & Director</p>
+            <p class="text-sm md:text-base font-normal tracking-wide text-gray-400 max-w-xl">Crafting high-stakes visual narratives for global creators & visionary brands.</p>
         </div>
     </section>
 
@@ -104,15 +80,10 @@
     <section class="w-full px-6 md:px-12 py-32 border-t border-white/10 mt-1 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl md:text-[6vw] leading-none font-black uppercase tracking-tighter mb-16">8+ Years of<br>Visual Storytelling.</h2>
-
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
                 <div>
-                    <p class="text-xl md:text-3xl text-gray-400 leading-snug font-medium mb-8">
-                        Bridging the gap between cinematic storytelling and high-retention commercial editing.
-                    </p>
-                    <p class="text-lg text-gray-500 leading-relaxed font-light mb-12">
-                        With a background in Visual Arts and Design from Vancouver Film School and Documentary Studies from Capilano University, my approach combines technical precision with narrative depth for global creators and educational brands.
-                    </p>
+                    <p class="text-xl md:text-3xl text-gray-400 leading-snug font-medium mb-8">Bridging the gap between cinematic storytelling and high-retention commercial editing.</p>
+                    <p class="text-lg text-gray-500 leading-relaxed font-light mb-12">With a background in Visual Arts and Design from Vancouver Film School and Documentary Studies from Capilano University, my approach combines technical precision with narrative depth for global creators and educational brands.</p>
                     <h3 class="text-sm font-bold uppercase tracking-widest text-gray-600 border-b border-white/10 pb-4 mb-6">The Stack</h3>
                     <ul class="text-2xl md:text-4xl font-black uppercase tracking-tighter flex flex-wrap gap-x-8 gap-y-4">
                         <li class="hover:text-gray-400 transition-colors cursor-default">Premiere Pro</li>
@@ -120,18 +91,11 @@
                         <li class="hover:text-gray-400 transition-colors cursor-default">After Effects</li>
                     </ul>
                 </div>
-
                 <div class="w-full">
                     <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 cursor-grab" style="scrollbar-width: none;">
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
-                            <img src="gallery1.jpg" alt="Gallery 1" loading="lazy" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
-                            <img src="gallery2.jpg" alt="Gallery 2" loading="lazy" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
-                        </div>
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
-                            <img src="gallery3.jpg" alt="Gallery 3" loading="lazy" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
-                        </div>
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="gallery1.jpg" alt="Gallery 1" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="gallery2.jpg" alt="Gallery 2" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="gallery3.jpg" alt="Gallery 3" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
                     </div>
                     <p class="text-xs font-bold text-gray-600 uppercase tracking-widest mt-4 text-center">Swipe to explore →</p>
                 </div>
@@ -142,17 +106,13 @@
     <!-- FOOTER -->
     <footer class="w-full px-6 md:px-12 py-32 md:py-48 border-t border-white/10 flex flex-col items-start bg-[#050505]">
         <h2 class="text-6xl md:text-[10vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">Let's Cut.</h2>
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-2xl md:text-4xl font-bold hover:text-[#89D6E8] transition-colors underline decoration-4 underline-offset-8">
-            mrinalrajput2000@gmail.com
-        </a>
+        <a href="mailto:mrinalrajput2000@gmail.com" class="text-2xl md:text-4xl font-bold hover:text-[#89D6E8] transition-colors underline decoration-4 underline-offset-8">mrinalrajput2000@gmail.com</a>
     </footer>
 
     <!-- VIDEO MODAL -->
     <div id="videoModal" class="modal-hidden fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 md:p-12 backdrop-blur-xl">
         <button onclick="closeModal()" aria-label="Close" class="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors z-50">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
         <div class="w-full max-w-7xl aspect-video bg-black overflow-hidden shadow-2xl relative">
             <iframe id="modalFrame" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -160,9 +120,7 @@
     </div>
 
     <script>
-        /* ============================================================
-           YOUR PROJECTS
-           ============================================================ */
+        /* ============ YOUR PROJECTS (one line each) ============ */
         const projects = [
             { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'project2-loop.mp4',  thumb: 'project2-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
@@ -171,8 +129,8 @@
 
             { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'project6-loop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
-            
-            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
+
+            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07', type: 'Visual Storytelling', wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 10',       type: 'Short Form',            wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' }
@@ -192,85 +150,82 @@
             const hasLink = p.vimeo && p.vimeo !== 'YOUR_VIMEO_ID';
             const card = document.createElement('div');
             card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
+            /* The video has NO source until the first hover, so nothing heavy downloads on page load */
             card.innerHTML = `
-                <video muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                    <source src="${p.video}" type="video/mp4">
-                </video>
-                ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
+                <video muted loop playsinline preload="none" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
+                ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
                 <div class="absolute inset-0 pointer-events-none ${p.wide ? 'p-8' : 'p-6'} flex flex-col justify-end opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
                     <h2 class="${p.wide ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl'} font-black uppercase tracking-tighter leading-none mb-1">${p.title}</h2>
                     <p class="${p.wide ? 'text-sm' : 'text-xs'} font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
                 </div>`;
 
             const video = card.querySelector('video');
-            card.addEventListener('mouseenter', () => video.play().catch(() => {}));
+            card.addEventListener('mouseenter', () => {
+                if (!video.getAttribute('src')) video.src = p.video;
+                video.play().catch(() => {});
+            });
             card.addEventListener('mouseleave', () => video.pause());
             if (hasLink) card.addEventListener('click', () => openModal(`https://player.vimeo.com/video/${p.vimeo}`));
 
             grid.appendChild(card);
         });
 
-        /* ============================================================
-           iOS CONTACT CARD LOGIC
-           ============================================================ */
-        const contactTrigger = document.getElementById('contactTrigger');
-        const contactCardOverlay = document.getElementById('contactCardOverlay');
-        const contactCard = document.getElementById('contactCard');
-        const contactCardBg = document.getElementById('contactCardBg');
-        const closeContactCard = document.getElementById('closeContactCard');
-
-        function openContact() {
-            document.body.style.overflow = 'hidden';
-            contactCardOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            contactCard.classList.remove('scale-95');
-            contactCard.classList.add('scale-100');
-        }
-
-        function closeContact() {
-            document.body.style.overflow = 'auto';
-            contactCardOverlay.classList.add('opacity-0', 'pointer-events-none');
-            contactCard.classList.remove('scale-100');
-            contactCard.classList.add('scale-95');
-        }
-
-        contactTrigger.addEventListener('click', openContact);
-        closeContactCard.addEventListener('click', closeContact);
-        contactCardBg.addEventListener('click', closeContact);
-
-        /* ============================================================
-           SCROLLSPY 
-           ============================================================ */
-        const floatingMenu = document.getElementById('floatingMenu');
-        const sections = ['ads', 'short-films', 'organic-content'];
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > window.innerHeight * 0.5) {
-                floatingMenu.classList.remove('translate-y-24', 'opacity-0');
-            } else {
-                floatingMenu.classList.add('translate-y-24', 'opacity-0');
-            }
-
-            let current = '';
-            sections.forEach(id => {
-                const el = document.getElementById(id);
-                if (el && window.scrollY >= (el.offsetTop - 200)) {
-                    current = id;
-                }
-            });
-
-            document.querySelectorAll('.nav-dot').forEach(a => {
-                a.classList.remove('bg-[#89D6E8]', 'text-black');
-                a.classList.add('text-gray-500');
-                if (a.getAttribute('href') === `#${current}`) {
-                    a.classList.remove('text-gray-500');
-                    a.classList.add('bg-[#89D6E8]', 'text-black');
-                }
-            });
+        /* Hero video: start only after the page has loaded, and skip on data-saver / reduced-motion */
+        window.addEventListener('load', () => {
+            const hero = document.getElementById('heroVideo');
+            const saver = navigator.connection && navigator.connection.saveData;
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (saver || reduce) return;
+            hero.src = hero.dataset.src;
+            hero.play().catch(() => {});
         });
 
-        /* ============================================================
-           MODAL LOGIC
-           ============================================================ */
+        /* Contact card */
+        const contactOverlay = document.getElementById('contactCardOverlay');
+        const contactCard = document.getElementById('contactCard');
+        const contactImg = document.getElementById('contactImg');
+
+        function openContact() {
+            if (!contactImg.getAttribute('src')) contactImg.src = contactImg.dataset.src;
+            document.body.style.overflow = 'hidden';
+            contactOverlay.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
+            contactCard.classList.replace('scale-95', 'scale-100');
+        }
+        function closeContact() {
+            document.body.style.overflow = 'auto';
+            contactOverlay.classList.add('opacity-0', 'invisible', 'pointer-events-none');
+            contactCard.classList.replace('scale-100', 'scale-95');
+        }
+        document.getElementById('contactTrigger').addEventListener('click', openContact);
+        document.getElementById('closeContactCard').addEventListener('click', closeContact);
+        document.getElementById('contactCardBg').addEventListener('click', closeContact);
+
+        /* Scrollspy (runs once per frame, not on every scroll event) */
+        const floatingMenu = document.getElementById('floatingMenu');
+        const sectionEls = ['ads', 'short-films', 'organic-content'].map(id => document.getElementById(id));
+        const navDots = document.querySelectorAll('.nav-dot');
+        let ticking = false;
+
+        function updateScroll() {
+            floatingMenu.classList.toggle('translate-y-24', window.scrollY <= window.innerHeight * 0.5);
+            floatingMenu.classList.toggle('opacity-0', window.scrollY <= window.innerHeight * 0.5);
+
+            let current = '';
+            sectionEls.forEach(el => { if (el && window.scrollY >= el.offsetTop - 200) current = el.id; });
+
+            navDots.forEach(a => {
+                const active = a.getAttribute('href') === `#${current}`;
+                a.classList.toggle('bg-[#89D6E8]', active);
+                a.classList.toggle('text-black', active);
+                a.classList.toggle('text-gray-500', !active);
+            });
+            ticking = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(updateScroll); ticking = true; }
+        }, { passive: true });
+
+        /* Video modal */
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('modalFrame');
 
@@ -280,16 +235,16 @@
             modal.classList.add('modal-active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeModal() {
             modal.classList.remove('modal-active');
             modal.classList.add('modal-hidden');
             document.body.style.overflow = 'auto';
             iframe.src = '';
         }
-
         modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeModal(); closeContact(); }
+        });
     </script>
 </body>
 </html>
