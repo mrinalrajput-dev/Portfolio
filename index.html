@@ -21,13 +21,20 @@
         ::-webkit-scrollbar-thumb:hover { background: #444; }
     </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black">
+<body class="antialiased selection:bg-white selection:text-black relative">
 
-    <!-- NAV: solid blurred bar so the photo never clashes with content -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
-        <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-10 w-10 rounded-full object-cover ring-1 ring-white/20">
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">Contact</a>
+    <!-- REFINED TOP NAV: Thinner on mobile, 'Let's Connect' -->
+    <nav class="fixed top-0 w-full z-40 px-5 py-2 md:px-6 md:py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
+        <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20">
+        <a href="mailto:mrinalrajput2000@gmail.com" class="text-[10px] md:text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">Let's Connect</a>
     </nav>
+
+    <!-- FLOATING BOTTOM MENU (Appears on scroll) -->
+    <div id="floatingMenu" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#111]/95 backdrop-blur-xl border border-white/10 rounded-full p-1 flex gap-1 shadow-2xl transition-all duration-500 transform translate-y-24 opacity-0">
+        <a href="#ads" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white text-black transition-all">Ads</a>
+        <a href="#short-films" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Short Films</a>
+        <a href="#organic-content" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Organic</a>
+    </div>
 
     <!-- HERO (GMUNK-STYLE BOTTOM-LEFT ALIGNMENT) -->
     <section class="h-screen w-full relative overflow-hidden bg-black flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-24">
@@ -53,7 +60,7 @@
         
     </section>
 
-    <!-- WORK GRID (cards are built from the list at the bottom of this file) -->
+    <!-- WORK GRID -->
     <section id="grid" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 border-t border-white/10 pt-1 bg-black"></section>
 
     <!-- ABOUT -->
@@ -118,22 +125,20 @@
     <script>
         /* ============================================================
            YOUR PROJECTS:
-           Add "sectionHeader: 'Your Text'" to any project to create a 
-           massive full-width break right before that project loads.
            ============================================================ */
         const projects = [
             // 1. ADS (Top Row - 4:5 Vertical)
-            { sectionHeader: 'Ads.', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'project2-loop.mp4',  thumb: 'project2-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Ed Mylett',        type: 'Narrative Series',      wide: false, video: 'project3-loop.mp4',  thumb: 'project3-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Tony Robbins',     type: 'High-Retention Social', wide: false, video: 'project4-loop.mp4',  thumb: 'project4-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
 
             // 2. SHORT FILMS (Middle Row - 16:9 Widescreen)
-            { sectionHeader: 'Short Films.', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'project6-loop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             
             // 3. ORGANIC CONTENT (Bottom Row - 4:5 Vertical)
-            { sectionHeader: 'Organic Content.', title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 10',       type: 'Short Form',            wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' }
@@ -145,8 +150,9 @@
             // 1. INJECT SECTION HEADER IF IT EXISTS
             if (p.sectionHeader) {
                 const header = document.createElement('div');
-                // Spans all columns, adds massive padding, and creates a brutalist visual break
-                header.className = "col-span-1 md:col-span-2 lg:col-span-4 bg-[#050505] px-6 md:px-12 py-24 md:py-32 flex items-center";
+                header.id = p.sectionId;
+                // scroll-mt-24 prevents the section from hiding under the top nav when clicked
+                header.className = "col-span-1 md:col-span-2 lg:col-span-4 bg-[#050505] px-6 md:px-12 py-24 md:py-32 flex items-center scroll-mt-24";
                 header.innerHTML = `<h2 class="text-5xl md:text-[6vw] leading-none font-black uppercase tracking-tighter">${p.sectionHeader}</h2>`;
                 grid.appendChild(header);
             }
@@ -173,7 +179,43 @@
             grid.appendChild(card);
         });
 
-        /* Modal */
+        /* ============================================================
+           SCROLLSPY & FLOATING MENU LOGIC
+           ============================================================ */
+        const floatingMenu = document.getElementById('floatingMenu');
+        const sections = ['ads', 'short-films', 'organic-content'];
+        
+        window.addEventListener('scroll', () => {
+            // Show/Hide floating menu based on scroll depth (hide on hero)
+            if (window.scrollY > window.innerHeight * 0.5) {
+                floatingMenu.classList.remove('translate-y-24', 'opacity-0');
+            } else {
+                floatingMenu.classList.add('translate-y-24', 'opacity-0');
+            }
+
+            // Determine which section is active
+            let current = '';
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && window.scrollY >= (el.offsetTop - 200)) {
+                    current = id;
+                }
+            });
+
+            // Update button styles
+            document.querySelectorAll('.nav-dot').forEach(a => {
+                a.classList.remove('bg-white', 'text-black');
+                a.classList.add('text-gray-500');
+                if (a.getAttribute('href') === `#${current}`) {
+                    a.classList.remove('text-gray-500');
+                    a.classList.add('bg-white', 'text-black');
+                }
+            });
+        });
+
+        /* ============================================================
+           MODAL LOGIC
+           ============================================================ */
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('modalFrame');
 
