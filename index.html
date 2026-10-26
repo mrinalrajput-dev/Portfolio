@@ -26,10 +26,30 @@
     <!-- REFINED TOP NAV -->
     <nav class="fixed top-0 w-full z-40 px-5 py-2 md:px-6 md:py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
         <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20">
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-[10px] md:text-sm font-bold tracking-widest uppercase hover:text-[#800080] transition-colors">Let's Connect</a>
+        
+        <!-- INTERACTIVE CONNECT MENU -->
+        <div class="relative">
+            <button id="connectBtn" class="text-[10px] md:text-sm font-bold tracking-widest uppercase hover:text-[#800080] transition-colors focus:outline-none flex items-center gap-2">
+                Let's Connect
+                <!-- Small downward arrow icon -->
+                <svg class="w-3 h-3 md:w-4 md:h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <!-- Dropdown Container -->
+            <div id="connectDropdown" class="absolute right-0 mt-4 w-max bg-[#111]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl opacity-0 scale-95 pointer-events-none transition-all duration-300 ease-out origin-top-right flex flex-col gap-1">
+                <a href="mailto:mrinalrajput2000@gmail.com" class="block px-5 py-3 text-xs md:text-sm font-bold tracking-wider text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors text-right">
+                    mrinalrajput2000@gmail.com
+                </a>
+                <a href="tel:+910000000000" class="block px-5 py-3 text-xs md:text-sm font-bold tracking-wider text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors text-right">
+                    +91 00000 00000
+                </a>
+            </div>
+        </div>
     </nav>
 
-    <!-- FLOATING BOTTOM MENU (Fixed Text Stacking) -->
+    <!-- FLOATING BOTTOM MENU -->
     <div id="floatingMenu" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#111]/95 backdrop-blur-xl border border-white/10 rounded-full p-1 flex gap-1 shadow-2xl transition-all duration-500 transform translate-y-24 opacity-0 w-max">
         <a href="#ads" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Ads</a>
         <a href="#short-films" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Short Films</a>
@@ -171,7 +191,40 @@
         });
 
         /* ============================================================
-           SCROLLSPY (Updated for Purple Highlight)
+           DROPDOWN CONNECT MENU LOGIC
+           ============================================================ */
+        const connectBtn = document.getElementById('connectBtn');
+        const connectDropdown = document.getElementById('connectDropdown');
+        let isDropdownOpen = false;
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            isDropdownOpen = !isDropdownOpen;
+            
+            if (isDropdownOpen) {
+                // Open state: clear opacity-0, scale-95, pointer-none
+                connectDropdown.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                connectDropdown.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+                connectBtn.classList.add('text-[#800080]');
+            } else {
+                // Closed state
+                connectDropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                connectDropdown.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                connectBtn.classList.remove('text-[#800080]');
+            }
+        }
+
+        connectBtn.addEventListener('click', toggleDropdown);
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isDropdownOpen && !connectDropdown.contains(e.target) && e.target !== connectBtn) {
+                toggleDropdown(e);
+            }
+        });
+
+        /* ============================================================
+           SCROLLSPY 
            ============================================================ */
         const floatingMenu = document.getElementById('floatingMenu');
         const sections = ['ads', 'short-films', 'organic-content'];
@@ -192,11 +245,8 @@
             });
 
             document.querySelectorAll('.nav-dot').forEach(a => {
-                // Reset all tabs to gray text, transparent background
                 a.classList.remove('bg-[#800080]', 'text-white');
                 a.classList.add('text-gray-500');
-                
-                // Highlight active tab with solid Purple and White text
                 if (a.getAttribute('href') === `#${current}`) {
                     a.classList.remove('text-gray-500');
                     a.classList.add('bg-[#800080]', 'text-white');
