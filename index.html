@@ -29,7 +29,7 @@
         <div></div>
     </nav>
 
-    <!-- CONTACT CARD -->
+    <!-- CONTACT CARD (hidden fully when closed so it costs nothing) -->
     <div id="contactCardOverlay" class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-xl opacity-0 invisible pointer-events-none transition-all duration-500 flex items-center justify-center p-4">
         <div class="absolute inset-0" id="contactCardBg"></div>
         <div id="contactCard" class="relative w-full max-w-sm aspect-[4/5] md:aspect-[9/16] max-h-[85vh] bg-[#111] rounded-[2.5rem] overflow-hidden shadow-2xl scale-95 transition-transform duration-500 ease-out border border-white/10 flex flex-col items-center justify-end pb-8 md:pb-12">
@@ -62,9 +62,8 @@
         <a href="#organic-content" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Organic</a>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO (video loads AFTER the page appears) -->
     <section class="h-screen w-full relative overflow-hidden bg-black flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-24">
-        <!-- Reverted to instant autoplay and automatic preloading -->
         <video src="hero-loop.mp4" autoplay loop muted playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0"></video>
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none"></div>
         <div class="relative z-10 w-full max-w-4xl">
@@ -121,7 +120,7 @@
     </div>
 
     <script>
-        /* ============ YOUR PROJECTS ============ */
+        /* ============ YOUR PROJECTS (one line each) ============ */
         const projects = [
             { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'project2-loop.mp4',  thumb: 'project2-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
@@ -139,7 +138,7 @@
 
         const grid = document.getElementById('grid');
 
-        projects.forEach(p => {
+        projects.forEach((p, i) => {
             if (p.sectionHeader) {
                 const header = document.createElement('div');
                 header.id = p.sectionId;
@@ -151,19 +150,22 @@
             const hasLink = p.vimeo && p.vimeo !== 'YOUR_VIMEO_ID';
             const card = document.createElement('div');
             card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
-            
-            /* Videos now eagerly injected with src and preload="metadata" for instant hover playback */
+            /* The video has NO source until the first hover, so nothing heavy downloads on page load */
             card.innerHTML = `
-                <video src="${p.video}" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
-                ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
+                <video muted loop playsinline preload="none" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
+                ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="${i < 4 ? 'eager' : 'lazy'}" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
                 <div class="absolute inset-0 pointer-events-none ${p.wide ? 'p-8' : 'p-6'} flex flex-col justify-end opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
                     <h2 class="${p.wide ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl'} font-black uppercase tracking-tighter leading-none mb-1">${p.title}</h2>
                     <p class="${p.wide ? 'text-sm' : 'text-xs'} font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
                 </div>`;
 
             const video = card.querySelector('video');
-            card.addEventListener('mouseenter', () => video.play().catch(() => {}));
-            card.addEventListener('mouseleave', () => video.pause());
+            card.addEventListener('mouseenter', () => {
+                if (!video.getAttribute('src')) video.src = p.video;
+                video.play().catch(() => {});
+            });
+            video.addEventListener('playing', () => card.classList.add('is-playing'));
+            card.addEventListener('mouseleave', () => { video.pause(); card.classList.remove('is-playing'); });
             if (hasLink) card.addEventListener('click', () => openModal(`https://player.vimeo.com/video/${p.vimeo}`));
 
             grid.appendChild(card);
@@ -189,7 +191,7 @@
         document.getElementById('closeContactCard').addEventListener('click', closeContact);
         document.getElementById('contactCardBg').addEventListener('click', closeContact);
 
-        /* Scrollspy */
+        /* Scrollspy (runs once per frame, not on every scroll event) */
         const floatingMenu = document.getElementById('floatingMenu');
         const sectionEls = ['ads', 'short-films', 'organic-content'].map(id => document.getElementById(id));
         const navDots = document.querySelectorAll('.nav-dot');
