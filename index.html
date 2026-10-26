@@ -134,7 +134,7 @@
             { title: 'Ed Mylett',        type: 'Narrative Series',      wide: false, video: 'project3-loop.mp4',  thumb: 'project3-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Tony Robbins',     type: 'High-Retention Social', wide: false, video: 'project4-loop.mp4',  thumb: 'project4-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
 
-            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'skywardthumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'project6-loop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
 
             { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07', type: 'Visual Storytelling', wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' },
@@ -204,4 +204,48 @@
         /* Scrollspy */
         const floatingMenu = document.getElementById('floatingMenu');
         const sectionEls = ['ads', 'short-films', 'organic-content'].map(id => document.getElementById(id));
-        const navDots = document.querySelectorAll('.
+        const navDots = document.querySelectorAll('.nav-dot');
+        let ticking = false;
+
+        function updateScroll() {
+            floatingMenu.classList.toggle('translate-y-24', window.scrollY <= window.innerHeight * 0.5);
+            floatingMenu.classList.toggle('opacity-0', window.scrollY <= window.innerHeight * 0.5);
+
+            let current = '';
+            sectionEls.forEach(el => { if (el && window.scrollY >= el.offsetTop - 200) current = el.id; });
+
+            navDots.forEach(a => {
+                const active = a.getAttribute('href') === `#${current}`;
+                a.classList.toggle('bg-[#89D6E8]', active);
+                a.classList.toggle('text-black', active);
+                a.classList.toggle('text-gray-500', !active);
+            });
+            ticking = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(updateScroll); ticking = true; }
+        }, { passive: true });
+
+        /* Video modal */
+        const modal = document.getElementById('videoModal');
+        const iframe = document.getElementById('modalFrame');
+
+        function openModal(url) {
+            iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+            modal.classList.remove('modal-hidden');
+            modal.classList.add('modal-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            modal.classList.remove('modal-active');
+            modal.classList.add('modal-hidden');
+            document.body.style.overflow = 'auto';
+            iframe.src = '';
+        }
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeModal(); closeContact(); }
+        });
+    </script>
+</body>
+</html>
