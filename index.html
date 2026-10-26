@@ -4,24 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mrinal Rajput | Video Editor & Director</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Fallback -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Forces true Helvetica, stark black background, and hides horizontal overflow */
-        body { 
-            font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif; 
-            background-color: #000000; 
-            color: #ffffff; 
-            overflow-x: hidden; 
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
         }
-        
-        /* Lightbox Modal Transitions */
         .modal-hidden { opacity: 0; pointer-events: none; visibility: hidden; transition: all 0.3s ease; }
         .modal-active { opacity: 1; pointer-events: auto; visibility: visible; transition: all 0.3s ease; }
-        
-        /* Brutalist Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: #222; }
@@ -30,14 +23,14 @@
 </head>
 <body class="antialiased selection:bg-white selection:text-black">
 
-    <!-- MINIMAL NAVIGATION -->
-    <nav class="fixed top-0 w-full z-40 p-6 mix-blend-difference flex justify-between items-center pointer-events-none">
-        <img src="IMG_8580 (1).jpeg" alt="Mrinal Rajput" class="h-12 w-12 rounded-full object-cover pointer-events-auto">
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity pointer-events-auto">Contact</a>
+    <!-- NAV: solid blurred bar so the photo never clashes with content -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
+        <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-10 w-10 rounded-full object-cover ring-1 ring-white/20">
+        <a href="mailto:mrinalrajput2000@gmail.com" class="text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">Contact</a>
     </nav>
 
-    <!-- MASSIVE TYPOGRAPHY HERO -->
-    <section class="h-screen w-full flex flex-col justify-center items-center text-center px-6 md:px-12 relative">
+    <!-- HERO -->
+    <section class="h-screen w-full flex flex-col justify-center items-center text-center px-6 md:px-12">
         <h1 class="text-[16vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">Mrinal</h1>
         <p class="text-lg md:text-2xl font-bold tracking-widest uppercase text-gray-400 max-w-3xl">
             Video Editor & Director <br>
@@ -45,167 +38,15 @@
         </p>
     </section>
 
-    <!-- EXPANDED MULTI-FORMAT WORK GRID (4-2-4 LAYOUT) -->
-    <section class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 border-t border-white/10 pt-1 bg-[#000]">
-        
-        <!-- ROW 1: FOUR VERTICAL BLOCKS (4:5) -->
-        <!-- PROJECT 1 -->
-        <!-- PROJECT 1 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" 
-             onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')"
-             onmouseenter="this.querySelector('video').play()"
-             onmouseleave="this.querySelector('video').pause()">
-            
-            <!-- Bottom Layer: The Video -->
-            <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="project1-loop.mp4" type="video/mp4">
-            </video>
+    <!-- WORK GRID (cards are built from the list at the bottom of this file) -->
+    <section id="grid" class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 border-t border-white/10 pt-1 bg-black"></section>
 
-            <!-- Middle Layer: The Static Image (Fades out on hover) -->
-            <img src="4.webp" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">
-            
-            <!-- Top Layer: The Text Overlay -->
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Rudes Denim</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Clothing Brand Ad</p>
-            </div>
-        </div>
-            
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Rudes Denim</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Clothing Brand</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 2 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project2-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Cardone Ventures</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Brand Anthem</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 3 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project3-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Ed Mylett</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Narrative Series</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 4 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project4-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Tony Robbins</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">High-Retention Social</p>
-            </div>
-        </div>
-
-        <!-- ROW 2: TWO WIDESCREEN BLOCKS (16:9, spanning 2 columns) -->
-        <!-- PROJECT 5 (WIDESCREEN) -->
-        <div class="relative md:col-span-2 aspect-video group overflow-hidden bg-[#111] cursor-pointer" 
-             onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')"
-             onmouseenter="this.querySelector('video').play()"
-             onmouseleave="this.querySelector('video').pause()">
-            
-            <!-- Bottom Layer: The Video -->
-            <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="project5-loop.mp4" type="video/mp4">
-            </video>
-
-            <!-- Middle Layer: The Static Image -->
-            <img src="assets/project5-thumb.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">
-            
-            <!-- Top Layer: The Text Overlay -->
-            <div class="absolute inset-0 pointer-events-none p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-1">Tactical Traders</h2>
-                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Video Sales Letter</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 6 (WIDESCREEN) -->
-        <div class="relative md:col-span-2 aspect-video group overflow-hidden bg-[#111] cursor-pointer" 
-             onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')"
-             onmouseenter="this.querySelector('video').play()"
-             onmouseleave="this.querySelector('video').pause()">
-            
-            <!-- Bottom Layer: The Video -->
-            <video muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project6-loop.mp4" type="video/mp4">
-            </video>
-
-            <!-- Middle Layer: The Static Image -->
-            <img src="assets/project6-thumb.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">
-            
-            <!-- Top Layer: The Text Overlay -->
-            <div class="absolute inset-0 pointer-events-none p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
-                <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-1">Edvia Campaigns</h2>
-                <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">Educational Series</p>
-            </div>
-        </div>
-        <!-- ROW 3: FOUR VERTICAL BLOCKS (4:5) -->
-        <!-- PROJECT 7 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project7-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Project 07</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Visual Storytelling</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 8 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project8-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Project 08</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Documentary Cut</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 9 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project9-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Project 09</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Motion Graphics</p>
-            </div>
-        </div>
-
-        <!-- PROJECT 10 -->
-        <div class="relative aspect-[4/5] group overflow-hidden bg-[#111] cursor-pointer" onclick="openModal('https://player.vimeo.com/video/YOUR_VIMEO_ID')">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
-                <source src="assets/project10-loop.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-none mb-1">Project 10</h2>
-                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">Short Form</p>
-            </div>
-        </div>
-
-    </section>
-                
-    <!-- ABOUT & TOOLKIT WITH SLIDESHOW -->
+    <!-- ABOUT -->
     <section class="w-full px-6 md:px-12 py-32 border-t border-white/10 mt-1 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl md:text-[6vw] leading-none font-black uppercase tracking-tighter mb-16">8+ Years of<br>Visual Storytelling.</h2>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
-                <!-- Text & Toolkit -->
                 <div>
                     <p class="text-xl md:text-3xl text-gray-400 leading-snug font-medium mb-8">
                         Bridging the gap between cinematic storytelling and high-retention commercial editing.
@@ -213,7 +54,6 @@
                     <p class="text-lg text-gray-500 leading-relaxed font-light mb-12">
                         With a background in Visual Arts and Design from Vancouver Film School and Documentary Studies from Capilano University, my approach combines technical precision with narrative depth for global creators and educational brands.
                     </p>
-                    
                     <h3 class="text-sm font-bold uppercase tracking-widest text-gray-600 border-b border-white/10 pb-4 mb-6">The Stack</h3>
                     <ul class="text-2xl md:text-4xl font-black uppercase tracking-tighter flex flex-wrap gap-x-8 gap-y-4">
                         <li class="hover:text-gray-400 transition-colors cursor-default">Premiere Pro</li>
@@ -221,27 +61,18 @@
                         <li class="hover:text-gray-400 transition-colors cursor-default">After Effects</li>
                     </ul>
                 </div>
-                
-                <!-- Swipeable Personal Gallery -->
+
                 <div class="w-full">
                     <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 cursor-grab" style="scrollbar-width: none;">
-                        
-                        <!-- Image 1 -->
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden relative">
-                            <!-- Replace src with your image file (e.g., gallery1.jpg) -->
-                            <img src="gallery1.jpg" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
+                            <img src="gallery1.jpg" alt="Gallery 1" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
                         </div>
-                        
-                        <!-- Image 2 -->
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden relative">
-                            <img src="gallery2.jpg" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
+                            <img src="gallery2.jpg" alt="Gallery 2" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
                         </div>
-                        
-                        <!-- Image 3 -->
-                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden relative">
-                            <img src="gallery3.jpg" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
+                        <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden">
+                            <img src="gallery3.jpg" alt="Gallery 3" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity">
                         </div>
-
                     </div>
                     <p class="text-xs font-bold text-gray-600 uppercase tracking-widest mt-4 text-center">Swipe to explore →</p>
                 </div>
@@ -249,7 +80,7 @@
         </div>
     </section>
 
-    <!-- MASSIVE FOOTER -->
+    <!-- FOOTER -->
     <footer class="w-full px-6 md:px-12 py-32 md:py-48 border-t border-white/10 flex flex-col items-start bg-[#050505]">
         <h2 class="text-6xl md:text-[10vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">Let's Cut.</h2>
         <a href="mailto:mrinalrajput2000@gmail.com" class="text-2xl md:text-4xl font-bold hover:text-gray-400 transition-colors underline decoration-4 underline-offset-8">
@@ -257,48 +88,84 @@
         </a>
     </footer>
 
-    <!-- DYNAMIC LIGHTBOX MODAL -->
+    <!-- VIDEO MODAL -->
     <div id="videoModal" class="modal-hidden fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 md:p-12 backdrop-blur-xl">
-        
-        <!-- Close Button -->
-        <button onclick="closeModal()" class="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors z-50">
+        <button onclick="closeModal()" aria-label="Close" class="absolute top-6 right-6 md:top-10 md:right-10 text-white/50 hover:text-white transition-colors z-50">
             <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        
-        <!-- Video Player -->
         <div class="w-full max-w-7xl aspect-video bg-black overflow-hidden shadow-2xl relative">
             <iframe id="modalFrame" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
-    <!-- MODAL LOGIC -->
     <script>
+        /* ============================================================
+           YOUR PROJECTS: edit one line per project.
+           title / type : text shown on hover
+           wide         : true = widescreen card, false = vertical card
+           video        : looping preview clip (plays on hover)
+           thumb        : still image shown until hover ('' = none)
+           vimeo        : your Vimeo ID, numbers only (e.g. '123456789')
+           ============================================================ */
+        const projects = [
+            { title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',        thumb: '4.webp',                    vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'assets/project2-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Ed Mylett',        type: 'Narrative Series',      wide: false, video: 'assets/project3-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Tony Robbins',     type: 'High-Retention Social', wide: false, video: 'assets/project4-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Tactical Traders', type: 'Video Sales Letter',    wide: true,  video: 'project5-loop.mp4',        thumb: 'assets/project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Edvia Campaigns',  type: 'Educational Series',    wide: true,  video: 'assets/project6-loop.mp4', thumb: 'assets/project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'assets/project7-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'assets/project8-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'assets/project9-loop.mp4', thumb: '',                          vimeo: 'YOUR_VIMEO_ID' },
+            { title: 'Project 10',       type: 'Short Form',            wide: false, video: 'assets/project10-loop.mp4', thumb: '',                         vimeo: 'YOUR_VIMEO_ID' }
+        ];
+
+        const grid = document.getElementById('grid');
+
+        projects.forEach(p => {
+            const hasLink = p.vimeo && p.vimeo !== 'YOUR_VIMEO_ID';
+            const card = document.createElement('div');
+            card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
+            card.innerHTML = `
+                <video muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
+                    <source src="${p.video}" type="video/mp4">
+                </video>
+                ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
+                <div class="absolute inset-0 pointer-events-none ${p.wide ? 'p-8' : 'p-6'} flex flex-col justify-end opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
+                    <h2 class="${p.wide ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl'} font-black uppercase tracking-tighter leading-none mb-1">${p.title}</h2>
+                    <p class="${p.wide ? 'text-sm' : 'text-xs'} font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
+                </div>`;
+
+            const video = card.querySelector('video');
+            card.addEventListener('mouseenter', () => video.play().catch(() => {}));
+            card.addEventListener('mouseleave', () => video.pause());
+            if (hasLink) card.addEventListener('click', () => openModal(`https://player.vimeo.com/video/${p.vimeo}`));
+
+            grid.appendChild(card);
+        });
+
+        /* Modal */
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('modalFrame');
 
-        function openModal(videoUrl) {
-            // Automatically append autoplay so the video starts instantly when the modal opens
-            const autoplayUrl = videoUrl + (videoUrl.includes('?') ? '&' : '?') + 'autoplay=1';
-            iframe.src = autoplayUrl;
-            
+        function openModal(url) {
+            iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
             modal.classList.remove('modal-hidden');
             modal.classList.add('modal-active');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.remove('modal-active');
             modal.classList.add('modal-hidden');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            iframe.src = ""; // Erase the iframe source so audio stops playing
+            document.body.style.overflow = 'auto';
+            iframe.src = '';
         }
 
-        // Close if the user clicks the black background outside the video
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeModal();
-        });
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     </script>
 </body>
 </html>
