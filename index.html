@@ -21,33 +21,28 @@
         ::-webkit-scrollbar-thumb:hover { background: #444; }
     </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black relative">
+<body class="antialiased selection:bg-[#800080] selection:text-white relative">
 
-    <!-- REFINED TOP NAV: Thinner on mobile, 'Let's Connect' -->
+    <!-- REFINED TOP NAV -->
     <nav class="fixed top-0 w-full z-40 px-5 py-2 md:px-6 md:py-3 flex justify-between items-center bg-black/60 backdrop-blur-md border-b border-white/10">
         <img src="IMG_8580%20(1).jpeg" alt="Mrinal Rajput" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20">
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-[10px] md:text-sm font-bold tracking-widest uppercase hover:opacity-70 transition-opacity">Let's Connect</a>
+        <a href="mailto:mrinalrajput2000@gmail.com" class="text-[10px] md:text-sm font-bold tracking-widest uppercase hover:text-[#800080] transition-colors">Let's Connect</a>
     </nav>
 
-    <!-- FLOATING BOTTOM MENU (Appears on scroll) -->
+    <!-- FLOATING BOTTOM MENU (Updated with Purple Active State) -->
     <div id="floatingMenu" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#111]/95 backdrop-blur-xl border border-white/10 rounded-full p-1 flex gap-1 shadow-2xl transition-all duration-500 transform translate-y-24 opacity-0">
-        <a href="#ads" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest bg-white text-black transition-all">Ads</a>
+        <a href="#ads" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Ads</a>
         <a href="#short-films" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Short Films</a>
         <a href="#organic-content" class="nav-dot px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Organic</a>
     </div>
 
-    <!-- HERO (GMUNK-STYLE BOTTOM-LEFT ALIGNMENT) -->
+    <!-- HERO (GMUNK-STYLE) -->
     <section class="h-screen w-full relative overflow-hidden bg-black flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-24">
-        
-        <!-- Background Video Layer -->
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none z-0">
             <source src="hero-loop.mp4" type="video/mp4">
         </video>
-        
-        <!-- Subtle Gradient Overlay (Protects Text Readability) -->
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-0 pointer-events-none"></div>
         
-        <!-- Foreground Text Layer -->
         <div class="relative z-10 w-full max-w-4xl">
             <h1 class="text-6xl md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter mb-4 drop-shadow-2xl">Mrinal</h1>
             <p class="text-base md:text-xl font-bold tracking-widest uppercase text-gray-300 drop-shadow-lg mb-4">
@@ -57,7 +52,6 @@
                 Crafting high-stakes visual narratives for global creators & visionary brands.
             </p>
         </div>
-        
     </section>
 
     <!-- WORK GRID -->
@@ -105,7 +99,7 @@
     <!-- FOOTER -->
     <footer class="w-full px-6 md:px-12 py-32 md:py-48 border-t border-white/10 flex flex-col items-start bg-[#050505]">
         <h2 class="text-6xl md:text-[10vw] leading-[0.85] font-black uppercase tracking-tighter mb-8">Let's Cut.</h2>
-        <a href="mailto:mrinalrajput2000@gmail.com" class="text-2xl md:text-4xl font-bold hover:text-gray-400 transition-colors underline decoration-4 underline-offset-8">
+        <a href="mailto:mrinalrajput2000@gmail.com" class="text-2xl md:text-4xl font-bold hover:text-[#800080] transition-colors underline decoration-4 underline-offset-8">
             mrinalrajput2000@gmail.com
         </a>
     </footer>
@@ -127,17 +121,17 @@
            YOUR PROJECTS:
            ============================================================ */
         const projects = [
-            // 1. ADS (Top Row - 4:5 Vertical)
+            // 1. ADS 
             { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: '4.webp',               vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Cardone Ventures', type: 'Brand Anthem',          wide: false, video: 'project2-loop.mp4',  thumb: 'project2-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Ed Mylett',        type: 'Narrative Series',      wide: false, video: 'project3-loop.mp4',  thumb: 'project3-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Tony Robbins',     type: 'High-Retention Social', wide: false, video: 'project4-loop.mp4',  thumb: 'project4-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
 
-            // 2. SHORT FILMS (Middle Row - 16:9 Widescreen)
+            // 2. SHORT FILMS 
             { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'project5-loop.mp4',  thumb: 'project5-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'project6-loop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
             
-            // 3. ORGANIC CONTENT (Bottom Row - 4:5 Vertical)
+            // 3. ORGANIC CONTENT 
             { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07',       type: 'Visual Storytelling',   wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
             { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
@@ -147,17 +141,14 @@
         const grid = document.getElementById('grid');
 
         projects.forEach(p => {
-            // 1. INJECT SECTION HEADER IF IT EXISTS
             if (p.sectionHeader) {
                 const header = document.createElement('div');
                 header.id = p.sectionId;
-                // scroll-mt-24 prevents the section from hiding under the top nav when clicked
                 header.className = "col-span-1 md:col-span-2 lg:col-span-4 bg-[#050505] px-6 md:px-12 py-24 md:py-32 flex items-center scroll-mt-24";
                 header.innerHTML = `<h2 class="text-5xl md:text-[6vw] leading-none font-black uppercase tracking-tighter">${p.sectionHeader}</h2>`;
                 grid.appendChild(header);
             }
 
-            // 2. BUILD THE REGULAR PROJECT CARD
             const hasLink = p.vimeo && p.vimeo !== 'YOUR_VIMEO_ID';
             const card = document.createElement('div');
             card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
@@ -180,20 +171,18 @@
         });
 
         /* ============================================================
-           SCROLLSPY & FLOATING MENU LOGIC
+           SCROLLSPY (Updated for Purple Highlight)
            ============================================================ */
         const floatingMenu = document.getElementById('floatingMenu');
         const sections = ['ads', 'short-films', 'organic-content'];
         
         window.addEventListener('scroll', () => {
-            // Show/Hide floating menu based on scroll depth (hide on hero)
             if (window.scrollY > window.innerHeight * 0.5) {
                 floatingMenu.classList.remove('translate-y-24', 'opacity-0');
             } else {
                 floatingMenu.classList.add('translate-y-24', 'opacity-0');
             }
 
-            // Determine which section is active
             let current = '';
             sections.forEach(id => {
                 const el = document.getElementById(id);
@@ -202,13 +191,15 @@
                 }
             });
 
-            // Update button styles
             document.querySelectorAll('.nav-dot').forEach(a => {
-                a.classList.remove('bg-white', 'text-black');
+                // Reset all tabs to gray text, transparent background
+                a.classList.remove('bg-[#800080]', 'text-white');
                 a.classList.add('text-gray-500');
+                
+                // Highlight active tab with solid Purple and White text
                 if (a.getAttribute('href') === `#${current}`) {
                     a.classList.remove('text-gray-500');
-                    a.classList.add('bg-white', 'text-black');
+                    a.classList.add('bg-[#800080]', 'text-white');
                 }
             });
         });
