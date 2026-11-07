@@ -238,24 +238,27 @@
                 card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
             }
             
+            // Safety check: keep video invisible if we have a thumb, otherwise show it at 60%
+            const vidOpacity = p.thumb ? 'opacity-0' : 'opacity-60';
+
             if (p.wide) {
                 // 16:9 Format
                 card.innerHTML = `
-                    <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
+                    <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover ${vidOpacity} group-hover:opacity-100 group-[.is-playing]:opacity-100 group-hover:scale-105 group-[.is-playing]:scale-105 transition-all duration-700 ease-out"></video>
                     ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
                     <div class="absolute inset-0 pointer-events-none p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 [@media(hover:none)]:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-20">
                         <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none mb-1">${p.title}</h2>
                         <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
                     </div>`;
             } else {
-                // 4:5 Format (Thumbnails Enabled)
+                // 4:5 Format
                 card.innerHTML = `
-                    <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
+                    <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover ${vidOpacity} group-hover:opacity-100 group-[.is-playing]:opacity-100 group-hover:scale-105 group-[.is-playing]:scale-105 transition-all duration-700 ease-out"></video>
                     ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
                     <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent to-transparent z-20">
-                        <div class="transform transition-transform duration-500 ease-out group-hover:-translate-y-3">
+                        <div class="transform transition-transform duration-500 ease-out group-hover:-translate-y-3 group-[.is-playing]:-translate-y-3">
                             <h2 class="text-2xl md:text-3xl font-black uppercase tracking-tighter leading-none mb-1 text-white">${p.title}</h2>
-                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-1">${p.type}</p>
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 group-[.is-playing]:opacity-100 transition-opacity duration-300 mt-1">${p.type}</p>
                         </div>
                     </div>`;
             }
