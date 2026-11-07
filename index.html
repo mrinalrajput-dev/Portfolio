@@ -61,7 +61,6 @@
     <!-- FLOATING BOTTOM MENU -->
     <div id="floatingMenu" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 bg-[#111]/95 backdrop-blur-xl border border-white/10 rounded-full p-1 flex gap-1 shadow-2xl transition-all duration-500 transform translate-y-24 opacity-0 w-max">
         <a href="#ads" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Ads</a>
-        <a href="#sales" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Sales</a>
         <a href="#short-films" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Films</a>
         <a href="#organic-content" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">Organic</a>
         <a href="#about" class="nav-dot whitespace-nowrap px-4 md:px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition-all">About</a>
@@ -145,17 +144,13 @@
     <script>
         /* ============ YOUR PROJECTS ============ */
         const projects = [
-            // Ads Section
+            // Ads Section - (Set horizontal to true to trigger the horizontal scroll)
             { sectionHeader: 'Ads.', sectionId: 'ads', horizontal: true, title: 'Rudes Denim', type: 'Clothing Brand Ad', wide: false, video: 'project1-loop.mp4', thumb: 'Rudesthumb000.jpg', youtube: 'aUBb9gkauuw' },
             { title: 'Foundr', type: 'Mastermind Ads', wide: false, video: 'Foundrloop.mp4', thumb: 'Foundrlthumb000.png', youtube: 'o7MRN1uR1MM' },
             { title: 'Jay Shetty', type: 'Genius Live Workshop', wide: false, video: 'jayshettyloop.mp4', thumb: 'shetty.jpeg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Edvia.ai', type: 'High-Retention Ads', wide: false, video: 'CanadaADSomya.mp4', thumb: 'CanadaAD000.png', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Jamie Kern Lima', type: 'Event Promo', wide: false, video: 'JKLloop.mp4', thumb: 'JKL.jpeg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Tactical Traders', type: 'E-Commerce', wide: false, video: 'TacticalTloop.mp4', thumb: 'Tacticalthumb000.jpg', youtube: 'YOUR_YOUTUBE_ID' },
-            
-            // Sales & VSLs Section
-            { sectionHeader: 'Sales & VSLs.', sectionId: 'sales', horizontal: false, title: 'Onboarding', type: 'Client Onboarding', wide: true, video: 'onboard-loop.mp4', thumb: 'onboard-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
-            { title: 'VSL Edit', type: 'Video Sales Letter', wide: true, video: 'vsl-loop.mp4', thumb: 'vsl-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
 
             // Short Films Section
             { sectionHeader: 'Short Films.', sectionId: 'short-films', horizontal: false, title: 'Skywards', type: 'Short Film', wide: true, video: 'skywardsloop.mp4', thumb: 'skywardsthumb.jpg', youtube: 'Gl7mH3GDK04' },
@@ -164,7 +159,7 @@
             // Organic Content Section
             { sectionHeader: 'Organic Content.', sectionId: 'organic-content', horizontal: false, title: 'Kidney Wellness Hub', type: 'Yoga / Pilates', wide: true, video: 'kidneyloop.mp4', thumb: 'kidney.jpg', youtube: 'ZBYhG8B0lPE' },
             { title: 'Singh Vloggerlogist', type: 'Vlog', wide: true, video: 'carvlogloop.mp4', thumb: 'carvlog.jpg', youtube: 'NQ87mBurC88' },
-            { spacer: true }, 
+            { spacer: true }, // This invisible spacer pushes the two vertical cards into the center
             { title: 'Project 09', type: 'Vertical Organic', wide: false, video: 'project9-loop.mp4', thumb: 'project9-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Project 10', type: 'Short Form', wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' }
         ];
@@ -289,7 +284,7 @@
 
         /* Scrollspy */
         const floatingMenu = document.getElementById('floatingMenu');
-        const sectionEls = ['ads', 'sales', 'short-films', 'organic-content', 'about'].map(id => document.getElementById(id));
+        const sectionEls = ['ads', 'short-films', 'organic-content', 'about'].map(id => document.getElementById(id));
         const navDots = document.querySelectorAll('.nav-dot');
         let ticking = false;
 
