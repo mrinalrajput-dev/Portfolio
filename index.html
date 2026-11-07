@@ -147,18 +147,18 @@
     <script>
         /* ============ YOUR PROJECTS ============ */
         const projects = [
-            { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: 'Rudesthumb000.jpg',    vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Foundr', type: 'Mastermind Ads',          wide: false, video: 'Foundrloop.mp4',  thumb: 'Foundrlthumb000.jpg',   vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Tactical Traders',        type: 'E-Commerce',      wide: false, video: 'TacticalTloop.mp4',  thumb: 'Tacticalthumb000.jpg',   vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Edvia',     type: 'High-Retention Social', wide: false, video: 'LLBloop.mp4',  thumb: 'LLB000thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: 'Rudesthumb000.jpg',    youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Foundr', type: 'Mastermind Ads',          wide: false, video: 'Foundrloop.mp4',  thumb: 'Foundrlthumb000.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Tactical Traders',        type: 'E-Commerce',      wide: false, video: 'TacticalTloop.mp4',  thumb: 'Tacticalthumb000.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Edvia',     type: 'High-Retention Social', wide: false, video: 'LLBloop.mp4',  thumb: 'LLB000thumb.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
 
-            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'skywardsloop.mp4',  thumb: 'skywardsthumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'saatguruloop.mp4',  thumb: 'project6-thumb.jpg', vimeo: 'YOUR_VIMEO_ID' },
+            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'skywardsloop.mp4',  thumb: 'skywardsthumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'saatguruloop.mp4',  thumb: 'project6-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
 
-            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07', type: 'Visual Storytelling', wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   vimeo: 'YOUR_VIMEO_ID' },
-            { title: 'Project 10',       type: 'Short Form',            wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg',  vimeo: 'YOUR_VIMEO_ID' }
+            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Project 07', type: 'Visual Storytelling', wide: false, video: 'project7-loop.mp4',  thumb: 'project7-thumb.jpg',  youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Project 08',       type: 'Documentary Cut',       wide: false, video: 'project8-loop.mp4',  thumb: 'project8-thumb.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Project 09',       type: 'Motion Graphics',       wide: false, video: 'project9-loop.mp4',  thumb: 'project9-thumb.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Project 10',       type: 'Short Form',            wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg',  youtube: 'YOUR_YOUTUBE_ID' }
         ];
 
         const grid = document.getElementById('grid');
@@ -191,7 +191,7 @@
                 grid.appendChild(header);
             }
 
-            const hasLink = p.vimeo && p.vimeo !== 'YOUR_VIMEO_ID';
+            const hasLink = p.youtube && p.youtube !== 'YOUR_YOUTUBE_ID';
             const card = document.createElement('div');
             card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
             
@@ -233,7 +233,7 @@
                 scrollVideoObserver.observe(video);
             }
 
-            if (hasLink) card.addEventListener('click', () => openModal(`https://player.vimeo.com/video/${p.vimeo}`));
+            if (hasLink) card.addEventListener('click', () => openModal(`https://www.youtube.com/embed/${p.youtube}`));
 
             grid.appendChild(card);
         });
@@ -288,7 +288,7 @@
         const iframe = document.getElementById('modalFrame');
 
         function openModal(url) {
-            iframe.src = url + (url.includes('?') ? '&' : '?') + 'autoplay=1';
+            iframe.src = url + '?autoplay=1&rel=0&modestbranding=1';
             modal.classList.remove('modal-hidden');
             modal.classList.add('modal-active');
             document.body.style.overflow = 'hidden';
