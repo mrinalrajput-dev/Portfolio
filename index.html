@@ -22,13 +22,12 @@
 </head>
 <body class="antialiased selection:bg-[#89D6E8] selection:text-black relative">
 
-   <!-- TOP NAV -->
+    <!-- TOP NAV -->
     <nav class="absolute top-0 left-0 w-full z-40 px-5 py-4 md:px-6 md:py-6 flex justify-between items-center bg-gradient-to-b from-black/70 to-transparent border-none outline-none ring-0 shadow-none">
         <button id="contactTrigger" class="flex items-center gap-3 group focus:outline-none border-none">
             <img src="profile.webp" alt="Mrinal" decoding="async" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover ring-1 ring-white/20 group-hover:ring-[#89D6E8] transition-all duration-300">
             <span class="text-[10px] md:text-sm font-bold tracking-widest uppercase text-white group-hover:text-[#89D6E8] transition-colors duration-300">Let's Connect</span>
         </button>
-        <div></div>
     </nav>
 
     <!-- CONTACT CARD -->
@@ -41,13 +40,11 @@
             <img id="contactImg" data-src="profile.webp" alt="Mrinal" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-100">
             <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90"></div>
             
-            <!-- Top Section: Name & Title -->
             <div class="relative z-10 w-full flex flex-col items-center text-center mt-2">
                 <h2 class="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-1 drop-shadow-2xl leading-none">Mrinal</h2>
                 <p class="text-[10px] md:text-xs font-bold text-[#89D6E8] tracking-widest uppercase drop-shadow-md">Video Editor & Director</p>
             </div>
 
-            <!-- Bottom Section: Action Buttons -->
             <div class="relative z-10 w-full flex flex-col gap-3">
                 <a href="tel:+918700251255" class="w-full py-4 bg-black/50 hover:bg-[#89D6E8] text-white hover:text-black backdrop-blur-md rounded-2xl flex justify-center items-center gap-3 font-bold transition-colors border border-white/20 hover:border-[#89D6E8]">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
@@ -79,7 +76,6 @@
             <p class="text-base md:text-xl font-bold tracking-widest uppercase text-gray-300 drop-shadow-lg mb-4">Video Editor & Director</p>
             <p class="text-sm md:text-base font-normal tracking-wide text-gray-400 max-w-xl">Crafting high-stakes visual narratives for global creators & visionary brands.</p>
             
-            <!-- LOCATION TAGS -->
             <div class="flex flex-wrap items-center gap-3 md:gap-4 mt-6 text-[10px] md:text-xs font-bold tracking-widest uppercase text-gray-500 drop-shadow-md">
                 <span class="flex items-center gap-2"><span class="text-sm">🇨🇦</span> Vancouver, Canada</span>
                 <span class="text-white/20">|</span>
@@ -102,7 +98,6 @@
                     
                     <h3 class="text-sm font-bold uppercase tracking-widest text-gray-600 border-b border-white/10 pb-4 mb-6">The Stack</h3>
                     
-                    <!-- SOFTWARE STACK WITH ICONS -->
                     <ul class="flex flex-col gap-5">
                         <li class="flex items-center gap-5 hover:text-gray-400 transition-colors cursor-default group">
                             <div class="w-12 h-12 rounded-2xl bg-[#2b0d2b] border border-purple-500/30 flex items-center justify-center text-purple-300 font-black text-base shadow-lg group-hover:border-purple-400 transition-colors">Pr</div>
@@ -150,7 +145,7 @@
     <script>
         /* ============ YOUR PROJECTS ============ */
         const projects = [
-            // Ads Section - (Set horizontal to true to trigger the horizontal scroll)
+            // Ads Section
             { sectionHeader: 'Ads.', sectionId: 'ads', horizontal: true, title: 'Rudes Denim', type: 'Clothing Brand Ad', wide: false, video: 'project1-loop.mp4', thumb: 'Rudesthumb000.jpg', youtube: 'aUBb9gkauuw' },
             { title: 'Foundr', type: 'Mastermind Ads', wide: false, video: 'Foundrloop.mp4', thumb: 'Foundrlthumb000.png', youtube: 'o7MRN1uR1MM' },
             { title: 'Jay Shetty', type: 'Genius Live Workshop', wide: false, video: 'jayshettyloop.mp4', thumb: 'shetty.jpeg', youtube: 'YOUR_YOUTUBE_ID' },
@@ -158,14 +153,18 @@
             { title: 'Jamie Kern Lima', type: 'Event Promo', wide: false, video: 'JKLloop.mp4', thumb: 'JKL.jpeg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Tactical Traders', type: 'E-Commerce', wide: false, video: 'TacticalTloop.mp4', thumb: 'Tacticalthumb000.jpg', youtube: 'YOUR_YOUTUBE_ID' },
             
+            // Sales & VSLs Section
+            { sectionHeader: 'Sales & VSLs.', sectionId: 'sales', horizontal: false, title: 'Onboarding', type: 'Client Onboarding', wide: true, video: 'onboard-loop.mp4', thumb: 'onboard-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'VSL Edit', type: 'Video Sales Letter', wide: true, video: 'vsl-loop.mp4', thumb: 'vsl-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+
             // Short Films Section
             { sectionHeader: 'Short Films.', sectionId: 'short-films', horizontal: false, title: 'Skywards', type: 'Short Film', wide: true, video: 'skywardsloop.mp4', thumb: 'skywardsthumb.jpg', youtube: 'Gl7mH3GDK04' },
             { title: 'Satguru', type: 'Short Documentary', wide: true, video: 'saatguruloop.mp4', thumb: 'project6-thumb.jpg', youtube: 'tl5YLASiCM0' },
 
-           // Organic Content Section
+            // Organic Content Section
             { sectionHeader: 'Organic Content.', sectionId: 'organic-content', horizontal: false, title: 'Kidney Wellness Hub', type: 'Yoga / Pilates', wide: true, video: 'kidneyloop.mp4', thumb: 'kidney.jpg', youtube: 'ZBYhG8B0lPE' },
             { title: 'Singh Vloggerlogist', type: 'Vlog', wide: true, video: 'carvlogloop.mp4', thumb: 'carvlog.jpg', youtube: 'NQ87mBurC88' },
-            { spacer: true }, // This invisible spacer pushes the two vertical cards into the center
+            { spacer: true }, 
             { title: 'Project 09', type: 'Vertical Organic', wide: false, video: 'project9-loop.mp4', thumb: 'project9-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Project 10', type: 'Short Form', wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' }
         ];
@@ -173,7 +172,7 @@
         const grid = document.getElementById('grid');
         const isTouchDevice = window.matchMedia('(hover: none)').matches;
 
-        // Intersection Observer strictly for Mobile/Touch devices
+        // Mobile Intersection Observer
         let scrollVideoObserver = null;
         if (isTouchDevice) {
             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
@@ -194,8 +193,7 @@
         let currentSectionIsHorizontal = false;
         let horizontalWrapper = null;
 
-        projects.forEach((p, i) => {
-            // Invisible Spacers for Grid Layouts
+        projects.forEach((p) => {
             if (p.spacer) {
                 const spacer = document.createElement('div');
                 spacer.className = "hidden lg:block"; 
@@ -203,7 +201,6 @@
                 return;
             }
 
-            // Headers & Layout Containers
             if (p.sectionHeader) {
                 const header = document.createElement('div');
                 header.id = p.sectionId;
@@ -213,7 +210,6 @@
 
                 currentSectionIsHorizontal = p.horizontal === true;
                 
-                // If section is marked horizontal, build a flex container instead of appending straight to the grid
                 if (currentSectionIsHorizontal) {
                     horizontalWrapper = document.createElement('div');
                     horizontalWrapper.className = "col-span-1 md:col-span-2 lg:col-span-4 flex overflow-x-auto snap-x snap-mandatory gap-1 pb-4 hide-scrollbar cursor-grab";
@@ -224,18 +220,15 @@
             const hasLink = p.youtube && p.youtube !== 'YOUR_YOUTUBE_ID';
             const card = document.createElement('div');
             
-            // Build the card dimensions based on whether it is horizontal scrolling or normal grid
             if (currentSectionIsHorizontal) {
                 card.className = `relative shrink-0 snap-center w-[85vw] md:w-[45vw] lg:w-[24.5vw] ${p.wide ? 'aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
             } else {
                 card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
             }
             
-            // Safety check: keep video invisible if we have a thumb, otherwise show it at 60%
             const vidOpacity = p.thumb ? 'opacity-0' : 'opacity-60';
 
             if (p.wide) {
-                // 16:9 Format
                 card.innerHTML = `
                     <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover ${vidOpacity} group-hover:opacity-100 group-[.is-playing]:opacity-100 group-hover:scale-105 group-[.is-playing]:scale-105 transition-all duration-700 ease-out"></video>
                     ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
@@ -244,7 +237,6 @@
                         <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
                     </div>`;
             } else {
-                // 4:5 Format
                 card.innerHTML = `
                     <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover ${vidOpacity} group-hover:opacity-100 group-[.is-playing]:opacity-100 group-hover:scale-105 group-[.is-playing]:scale-105 transition-all duration-700 ease-out"></video>
                     ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 group-hover:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
@@ -258,24 +250,16 @@
 
             const video = card.querySelector('video');
             
-            // Desktop Hover Support
-            card.addEventListener('mouseenter', () => {
-                video.play().catch(() => {});
-            });
+            card.addEventListener('mouseenter', () => video.play().catch(() => {}));
             video.addEventListener('playing', () => card.classList.add('is-playing'));
             card.addEventListener('mouseleave', () => { 
                 video.pause(); 
                 card.classList.remove('is-playing'); 
             });
 
-            // Mobile Scroll Autoplay Registration (Only active on touch devices)
-            if (scrollVideoObserver) {
-                scrollVideoObserver.observe(video);
-            }
-
+            if (scrollVideoObserver) scrollVideoObserver.observe(video);
             if (hasLink) card.addEventListener('click', () => openModal(`https://www.youtube.com/embed/${p.youtube}`));
 
-            // Append to the appropriate container
             if (currentSectionIsHorizontal) {
                 horizontalWrapper.appendChild(card);
             } else {
