@@ -16,6 +16,8 @@
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: #222; }
         ::-webkit-scrollbar-thumb:hover { background: #444; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="antialiased selection:bg-[#89D6E8] selection:text-black relative">
@@ -117,7 +119,7 @@
                     </ul>
                 </div>
                 <div class="w-full">
-                    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 cursor-grab" style="scrollbar-width: none;">
+                    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 cursor-grab hide-scrollbar">
                         <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="1.jpg" alt="Gallery 1" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
                         <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="2.png" alt="Gallery 2" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
                         <div class="snap-center shrink-0 w-[85%] md:w-[70%] aspect-[4/5] bg-[#111] rounded-lg overflow-hidden"><img src="3.png" alt="Gallery 3" loading="lazy" decoding="async" class="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"></div>
@@ -148,23 +150,29 @@
     <script>
         /* ============ YOUR PROJECTS ============ */
         const projects = [
-            // Ads Section
-            { sectionHeader: 'Ads.', sectionId: 'ads', title: 'Rudes Denim',      type: 'Clothing Brand Ad',     wide: false, video: 'project1-loop.mp4',  thumb: 'Rudesthumb000.jpg',    youtube: 'aUBb9gkauuw' },
-            { title: 'Foundr', type: 'Mastermind Ads',          wide: false, video: 'Foundrloop.mp4',  thumb: 'Foundrlthumb000.jpg',   youtube: 'o7MRN1uR1MM' },
-            { title: 'Tactical Traders',        type: 'E-Commerce',      wide: false, video: 'TacticalTloop.mp4',  thumb: 'Tacticalthumb000.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
-            { title: 'Edvia',     type: 'High-Retention Social', wide: false, video: 'LLBloop.mp4',  thumb: 'LLB000thumb.jpg',   youtube: 'YOUR_YOUTUBE_ID' },
+            // Ads Section - (Set horizontal to true to trigger the horizontal scroll)
+            { sectionHeader: 'Ads.', sectionId: 'ads', horizontal: true, title: 'Rudes Denim', type: 'Clothing Brand Ad', wide: false, video: 'project1-loop.mp4', thumb: 'Rudesthumb000.jpg', youtube: 'aUBb9gkauuw' },
+            { title: 'Foundr', type: 'Mastermind Ads', wide: false, video: 'Foundrloop.mp4', thumb: 'Foundrlthumb000.jpg', youtube: 'o7MRN1uR1MM' },
+            { title: 'Tactical Traders', type: 'E-Commerce', wide: false, video: 'TacticalTloop.mp4', thumb: 'Tacticalthumb000.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Edvia', type: 'High-Retention Social', wide: false, video: 'LLBloop.mp4', thumb: 'LLB000thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Ad Project 5', type: 'UGC Content', wide: false, video: 'ad5-loop.mp4', thumb: 'ad5-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Ad Project 6', type: 'Brand Commercial', wide: false, video: 'ad6-loop.mp4', thumb: 'ad6-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Ad Project 7', type: 'Social Campaign', wide: false, video: 'ad7-loop.mp4', thumb: 'ad7-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { title: 'Ad Project 8', type: 'Direct Response', wide: false, video: 'ad8-loop.mp4', thumb: 'ad8-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
 
-            // Sales & VSLs Section
-            { sectionHeader: 'Sales & VSLs.', sectionId: 'sales', title: 'Onboarding', type: 'Client Onboarding', wide: true, video: 'onboard-loop.mp4', thumb: 'onboard-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            // Sales & VSLs Section - (Reset to standard grid)
+            { sectionHeader: 'Sales & VSLs.', sectionId: 'sales', horizontal: false, title: 'Onboarding', type: 'Client Onboarding', wide: true, video: 'onboard-loop.mp4', thumb: 'onboard-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'VSL Edit', type: 'Video Sales Letter', wide: true, video: 'vsl-loop.mp4', thumb: 'vsl-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
 
             // Short Films Section
-            { sectionHeader: 'Short Films.', sectionId: 'short-films', title: 'Skywards', type: 'Short Film',    wide: true,  video: 'skywardsloop.mp4',  thumb: 'skywardsthumb.jpg', youtube: 'Gl7mH3GDK04' },
-            { title: 'Satguru',  type: 'Short Documentary',    wide: true,  video: 'saatguruloop.mp4',  thumb: 'project6-thumb.jpg', youtube: 'tl5YLASiCM0' },
+            { sectionHeader: 'Short Films.', sectionId: 'short-films', horizontal: false, title: 'Skywards', type: 'Short Film', wide: true, video: 'skywardsloop.mp4', thumb: 'skywardsthumb.jpg', youtube: 'Gl7mH3GDK04' },
+            { title: 'Satguru', type: 'Short Documentary', wide: true, video: 'saatguruloop.mp4', thumb: 'project6-thumb.jpg', youtube: 'tl5YLASiCM0' },
 
             // Organic Content Section
-            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', title: 'Kidney Wellness Hub', type: 'Yoga / Pilates', wide: true, video: 'kidneyloop.mp4', thumb: 'kidneythumb.jpg', youtube: 'ZBYhG8B0lPE' },
+            { sectionHeader: 'Organic Content.', sectionId: 'organic-content', horizontal: false, title: 'Kidney Wellness Hub', type: 'Yoga / Pilates', wide: true, video: 'kidneyloop.mp4', thumb: 'kidneythumb.jpg', youtube: 'ZBYhG8B0lPE' },
             { title: 'Project 09', type: 'Vertical Organic', wide: false, video: 'project9-loop.mp4', thumb: 'project9-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
+            { spacer: true }, // Fills the 4th column on desktop
+            { spacer: true }, // Skips the 1st column on the next row on desktop
             { title: 'Project 10', type: 'Short Form', wide: false, video: 'project10-loop.mp4', thumb: 'project10-thumb.jpg', youtube: 'YOUR_YOUTUBE_ID' },
             { title: 'Vlogs', type: 'Vlog', wide: true, video: 'vlogloop.mp4', thumb: 'vlogthumb.jpg', youtube: 'NQ87mBurC88' }
         ];
@@ -190,21 +198,48 @@
             }, observerOptions);
         }
 
+        let currentSectionIsHorizontal = false;
+        let horizontalWrapper = null;
+
         projects.forEach((p, i) => {
+            // Invisible Spacers for Grid Layouts
+            if (p.spacer) {
+                const spacer = document.createElement('div');
+                spacer.className = "hidden lg:block"; 
+                grid.appendChild(spacer);
+                return;
+            }
+
+            // Headers & Layout Containers
             if (p.sectionHeader) {
                 const header = document.createElement('div');
                 header.id = p.sectionId;
                 header.className = "col-span-1 md:col-span-2 lg:col-span-4 bg-[#050505] px-6 md:px-12 py-24 md:py-32 flex items-center scroll-mt-24";
                 header.innerHTML = `<h2 class="text-5xl md:text-[6vw] leading-none font-black uppercase tracking-tighter">${p.sectionHeader}</h2>`;
                 grid.appendChild(header);
+
+                currentSectionIsHorizontal = p.horizontal === true;
+                
+                // If section is marked horizontal, build a flex container instead of appending straight to the grid
+                if (currentSectionIsHorizontal) {
+                    horizontalWrapper = document.createElement('div');
+                    horizontalWrapper.className = "col-span-1 md:col-span-2 lg:col-span-4 flex overflow-x-auto snap-x snap-mandatory gap-1 pb-4 hide-scrollbar cursor-grab";
+                    grid.appendChild(horizontalWrapper);
+                }
             }
 
             const hasLink = p.youtube && p.youtube !== 'YOUR_YOUTUBE_ID';
             const card = document.createElement('div');
-            card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
+            
+            // Build the card dimensions based on whether it is horizontal scrolling or normal grid
+            if (currentSectionIsHorizontal) {
+                card.className = `relative shrink-0 snap-center w-[85vw] md:w-[45vw] lg:w-[24.5vw] ${p.wide ? 'aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
+            } else {
+                card.className = `relative ${p.wide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'} group overflow-hidden bg-[#111] ${hasLink ? 'cursor-pointer' : 'cursor-default'}`;
+            }
             
             if (p.wide) {
-                // 16:9 format
+                // 16:9 Format
                 card.innerHTML = `
                     <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
                     ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover opacity-60 group-[.is-playing]:opacity-0 transition-opacity duration-500 ease-out z-10">` : ''}
@@ -213,7 +248,7 @@
                         <p class="text-sm font-bold text-gray-400 uppercase tracking-widest">${p.type}</p>
                     </div>`;
             } else {
-                // 4:5 Vertical Cards
+                // 4:5 Format
                 card.innerHTML = `
                     <video src="${p.video}#t=0.001" muted loop playsinline preload="metadata" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"></video>
                     <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-end bg-gradient-to-t from-black/80 via-transparent to-transparent z-20">
@@ -243,7 +278,12 @@
 
             if (hasLink) card.addEventListener('click', () => openModal(`https://www.youtube.com/embed/${p.youtube}`));
 
-            grid.appendChild(card);
+            // Append to the appropriate container
+            if (currentSectionIsHorizontal) {
+                horizontalWrapper.appendChild(card);
+            } else {
+                grid.appendChild(card);
+            }
         });
 
         /* Contact card */
@@ -268,7 +308,6 @@
 
         /* Scrollspy */
         const floatingMenu = document.getElementById('floatingMenu');
-        // Updated to include 'sales'
         const sectionEls = ['ads', 'sales', 'short-films', 'organic-content', 'about'].map(id => document.getElementById(id));
         const navDots = document.querySelectorAll('.nav-dot');
         let ticking = false;
